@@ -24,7 +24,7 @@ public class Review {
     }
 
     public void setRating(int rating) throws RuntimeException {
-        if (rating > 10 || rating < 0){
+        if (rating > 5 || rating < 0){
             throw new RuntimeException("you cannot enter more than 10 or negative");
         }
         this.rating = rating;
