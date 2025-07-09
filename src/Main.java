@@ -37,9 +37,19 @@ public class Main {
         b1.reStock(5);
         System.out.println("Stock after restock: " + b1.getStock());
 
-        b1.purchase(user1, b1);
-        System.out.println("User purchases: " + user1.getPurchase_media_list().size());
-        System.out.println("Stock after purchase: " + b1.getStock());
+//        b1.purchase(user1, b1);
+//        System.out.println("User purchases: " + user1.getPurchase_media_list().size());
+//        System.out.println("Stock after purchase: " + b1.getStock());
+
+        user1.addToCart(b1);
+        System.out.println("User shopping cart: " + user1.getShopping_cart().size());
+        System.out.println("Stock after add to cart: " + b1.getStock());
+
+        System.out.println("User purchases before checkout: " + user1.getPurchase_media_list().size());
+        System.out.println("Stock before purchase checkout: " + b1.getStock());
+        user1.checkout();
+        System.out.println("User purchases after checkout: " + user1.getPurchase_media_list().size());
+        System.out.println("Stock after purchase checkout: " + b1.getStock());
 
         b1.setStock(0);
         b1.purchase(user1, b1); // Should print: cannot purchase

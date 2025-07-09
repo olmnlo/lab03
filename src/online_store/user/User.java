@@ -1,6 +1,7 @@
 package online_store.user;
 
 import online_store.media.Media;
+import online_store.media.book.Book;
 
 import java.util.ArrayList;
 
@@ -79,8 +80,19 @@ public class User {
     }
 
     public void checkout(){
-        purchase_media_list = new ArrayList<Media>();
-        shopping_cart = new ArrayList<Media>();
+        for (Media media : shopping_cart) {
+            purchase_media_list.add(media);
+
+            if (media instanceof Book) {
+                Book book = (Book) media;
+                int currentStock = book.getStock();
+                if (currentStock > 0) {
+                    book.setStock(currentStock - 1);
+                } else {
+                    System.out.println("Book \"" + book.getTitle() + "\" is out of stock and cannot be purchased.");
+                }
+            }
+        }
     }
 
     @Override
